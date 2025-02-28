@@ -1,16 +1,19 @@
 let button1 = document.getElementById("click1");
 let playgif = document.getElementById("centerimg");
+let audio = document.getElementById("audio1");
 
-let originalSrc = playgif.src; // Store the original image
-let gifSrc = playgif.getAttribute("gifp"); // Get the GIF source
+let originalSrc = playgif.src;
+let gifSrc = playgif.getAttribute("gifp");
 
-function showGifForSeconds() {
-    playgif.src = gifSrc; // Change to GIF
+function spinAndPlay() {
+    playgif.src = gifSrc;
 
-    // Set a timer to revert back to the original image after 3 seconds
+    audio.currentTime = 0;
+    audio.play();
+
     setTimeout(function() {
-        playgif.src = originalSrc; // Change back to the original static image
-    }, 3000); // 3000ms = 3 seconds
+        playgif.src = originalSrc;
+    }, 3000);
 }
 
-button1.addEventListener("click", showGifForSeconds);
+button1.addEventListener("click", spinAndPlay);
